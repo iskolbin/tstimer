@@ -1,0 +1,17 @@
+{
+  "name": "tstimer",
+  "main": "./lib/index.js",
+  "repository": "github.com/iskolbin/tstween",
+  "description": "Lightweight setInterval/setTimeout implementation for TS",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm lib/*; ./node_modules/typescript/bin/tsc",
+		"page": "./node_modules/typescript/bin/tsc -m amd --outFile public/dist.js -d false --sourceMap false",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^2.3.2"
+  },
+	"typings": "./lib/index.d.ts"
+}
