@@ -1,7 +1,8 @@
 export class Timer {
+	public priority: number = -1
+	public index: number = -1
+
 	constructor(
-		public priority: number,
-		public index: number,
 		public handler: (...args: any[]) => void, 
 		public timeout: number,
 		public args: any[] = [],

@@ -1,2 +1,2 @@
-export * from 'TimerPool'
-export * from 'Timer'
+export * from './TimerPool'
+export * from './Timer'
