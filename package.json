@@ -14,8 +14,8 @@
     "typescript": "^2.3.2"
   },
   "dependencies": {
-    "tsnow": "^1.0.0",
-    "tspriorityqueue": "^0.4.0"
+    "tsnow": "^1.0.1",
+    "tspriorityqueue": "^0.4.1"
   },
   "typings": "./lib/index.d.ts"
 }
