@@ -4,3 +4,4 @@ test*
 coverage*
 yarn.lock
 tsconfig.json
+.*

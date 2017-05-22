@@ -25,6 +25,8 @@ node_modules/
 # Output folder.
 dist/
 lib/
+coverage/
+.nyc_output/
 
 # Compiled files
 **.js
