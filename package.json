@@ -4,13 +4,13 @@
   "types": "./lib/index.d.ts",
   "repository": "github.com/iskolbin/tstween",
   "description": "Lightweight setInterval/setTimeout implementation for TS",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "license": "MIT",
   "scripts": {
     "test": "./node_modules/typescript/bin/tsc --experimentalDecorators -t es5 test.ts && ./node_modules/nyc/bin/nyc.js --reporter html --reporter text ./node_modules/mocha/bin/mocha test.js",
     "build": "rm lib/*; ./node_modules/typescript/bin/tsc",
     "page": "./node_modules/typescript/bin/tsc -m amd --outFile public/dist.js -d false --sourceMap false",
-    "prepublish": "npm run build"
+    "prepublish-on-install": "npm run build"
   },
   "devDependencies": {
     "typescript": "^2.3.2"
@@ -20,7 +20,7 @@
     "mocha": "^3.4.1",
     "mocha-typescript": "^1.1.4",
     "nyc": "^10.3.2",
-    "tsnow": "^1.0.1",
+    "tsnow": "^1.0.2",
     "tspriorityqueue": "^0.5.0"
   }
 }
