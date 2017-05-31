@@ -10,7 +10,7 @@
     "test": "./node_modules/typescript/bin/tsc --experimentalDecorators -t es5 test.ts && ./node_modules/nyc/bin/nyc.js --reporter html --reporter text ./node_modules/mocha/bin/mocha test.js",
     "build": "rm lib/*; ./node_modules/typescript/bin/tsc",
     "page": "./node_modules/typescript/bin/tsc -m amd --outFile public/dist.js -d false --sourceMap false",
-    "prepublish-on-install": "npm run build"
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "typescript": "^2.3.2"
