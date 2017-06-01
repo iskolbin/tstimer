@@ -1095,13 +1095,13 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-tsnow@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/tsnow/-/tsnow-1.1.1.tgz#df80de9de4d01b14932a7486d4743c1e645d239d"
+tsnow@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/tsnow/-/tsnow-1.1.2.tgz#17fc174879ec858bc60cf5244ac38057712d63ce"
 
-tspriorityqueue@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/tspriorityqueue/-/tspriorityqueue-0.5.1.tgz#dd15b03f5c4967c3f3b5756a7e1e7292a0ccaee3"
+tspriorityqueue@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/tspriorityqueue/-/tspriorityqueue-0.5.3.tgz#691ed462dd8918b68de01c5b6ae1f37444374019"
 
 typescript@^2.3.2:
   version "2.3.4"

@@ -20,7 +20,7 @@
     "mocha": "^3.4.1",
     "mocha-typescript": "^1.1.4",
     "nyc": "^10.3.2",
-    "tsnow": "^1.1.1",
-    "tspriorityqueue": "^0.5.1"
+    "tsnow": "^1.1.2",
+    "tspriorityqueue": "^0.5.3"
   }
 }
