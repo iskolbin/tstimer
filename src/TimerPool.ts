@@ -11,26 +11,33 @@ export class TimerPool {
 	}
 
 	add( timer: Timer ): boolean {
-		return this._timers.enqueue( timer )
+		if ( this.has( timer )) {
+			return false 
+		} else {
+			timer.descriptor = this._timers.enqueue( timer, timer.timeout )
+			return true
+		}
 	}
 
 	delete( timer: Timer ): boolean {
-		return this._timers.delete( timer )
+		return this._timers.delete( timer, timer.descriptor )
 	}
 
 	has( timer: Timer ): boolean {
-		return this._timers.has( timer )
+		return this._timers.has( timer, timer.descriptor )
 	}
 
-	setTimeout( handler: (...args:any[]) => void, timeout: number, ...args: any[] ): Timer {
-		const timer = new Timer( handler, timeout, args, false )
-		this._timers.enqueue( timer, this._time + timeout )
+	setTimeout( handler: (...args:any[]) => void, interval: number, ...args: any[] ): Timer {
+		const timer = new Timer( handler, interval, args, false )
+		timer.timeout = this._time + interval
+		timer.descriptor = this._timers.enqueue( timer, timer.timeout )
 		return timer
 	}
 
-	setInterval( handler: (...args:any[]) => void, timeout: number, ...args: any[] ): Timer {
-		const timer = new Timer( handler, timeout, args, true )
-		this._timers.enqueue( timer, this._time + timeout )
+	setInterval( handler: (...args:any[]) => void, interval: number, ...args: any[] ): Timer {
+		const timer = new Timer( handler, interval, args, true )
+		timer.timeout = this._time + interval
+		timer.descriptor = this._timers.enqueue( timer, timer.timeout )
 		return timer
 	}
 
@@ -48,15 +55,16 @@ export class TimerPool {
 			return false
 		}
 		const timers = this._timers
-		let topTimer = timers.peek()
-		while ( topTimer !== undefined && topTimer.priority <= time ) {
+		let closestTimeout = timers.firstPriority()
+		while ( closestTimeout !== undefined && closestTimeout <= time ) {
 			const timer = (<Timer>timers.dequeue())
-			const {handler, timeout, args, intervalMode} = timer
+			const {handler, args, intervalMode} = timer
 			handler.apply( timer, args )
 			if ( intervalMode ) {
-				timers.enqueue( timer, timer.priority + timeout )
+				timer.timeout = closestTimeout + timer.interval
+				timers.enqueue( timer, timer.timeout )
 			}
-			topTimer = timers.peek()
+			closestTimeout = timers.firstPriority()
 		}
 		return true
 	}
@@ -65,7 +73,7 @@ export class TimerPool {
 		const dt = time - this._time
 		this._time = time
 		this._timers.forEach( timer => {
-			timer.priority += dt
+			timer.timeout += dt
 		})
 	}
 

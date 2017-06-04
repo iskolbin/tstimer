@@ -69,24 +69,24 @@ import { now } from 'tsnow'
 
 	@test("manually add") case5() {
 		const tp = new TimerPool(0)
-		const v1 = {handler: () => {}, timeout: 100, args: [], priority: 0, queueIndex: -1, intervalMode: true }
-		const v2 = {handler: () => {}, timeout: 100, args: [], priority: 1, queueIndex: -1, intervalMode: false }
-		const v3 = {handler: () => {}, timeout: 100, args: [], priority: 2, queueIndex: 0, intervalMode: true }
+		const v1 = {handler: () => {}, timeout: 100, interval: 100, args: [], descriptor: -1, intervalMode: true }
+		const v2 = {handler: () => {}, timeout: 100, interval: 100, args: [], descriptor: -1, intervalMode: false }
+		const v3 = {handler: () => {}, timeout: 100, interval: 100, args: [], descriptor: 0, intervalMode: true }
 		const v4 = new Timer( () => {}, 100 )
 		const v5 = new Timer( () => {}, 100, [] )
 		const v6 = new Timer( () => {}, 100, [], true )
-		equal( tp.add( v3 ), false )
+		equal( tp.add( v3 ), true )
 		equal( tp.add( v1 ), true )
 		equal( tp.add( v1 ), false )
-		equal( tp.size, 1 )
+		equal( tp.size, 2 )
 		equal( tp.add( v2 ), true )
 		equal( tp.add( v2 ), false )
-		equal( tp.size, 2 )
+		equal( tp.size, 3 )
 		equal( tp.add( v3 ), false )
 		equal( tp.add( v4 ), true )
 		equal( tp.add( v5 ), true )
 		equal( tp.add( v6 ), true )
-		equal( tp.size, 5 )
+		equal( tp.size, 6 )
 	}
 
 	@test("setTimeout/setInterval/clearTimeout/clearInterval") case6() {
@@ -108,13 +108,13 @@ import { now } from 'tsnow'
 		const tp = new TimerPool(0)
 		const ts = [0,1,2,3,4].map( i => tp.setTimeout( () => {}, i * 100 ))
 		tp.reset( 300 )
-		ts.forEach( ({priority},i) => {
-			equal( priority, i*100 + 300 )
+		ts.forEach( ({timeout},i) => {
+			equal( timeout, i*100 + 300 )
 		})
 		const currentTime = now()
 		tp.reset()
-		ts.forEach( ({priority},i) => {
-			equal( (currentTime - priority - i*100 - 300) <= 0.1, true )
+		ts.forEach( ({timeout},i) => {
+			equal( (currentTime - timeout - i*100 - 300) <= 0.1, true )
 		})
 	}
 
@@ -138,7 +138,7 @@ import { now } from 'tsnow'
 		equal( message, "Hello" )
 		equal( tp.isEmpty(), true )
 	}
-	
+
 	@test("simulation intervals") case9() {
 		const tp = new TimerPool(0)
 		let message = ""

@@ -1099,9 +1099,9 @@ tsnow@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/tsnow/-/tsnow-1.1.2.tgz#17fc174879ec858bc60cf5244ac38057712d63ce"
 
-tspriorityqueue@^0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/tspriorityqueue/-/tspriorityqueue-0.5.3.tgz#691ed462dd8918b68de01c5b6ae1f37444374019"
+tspriorityqueue@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/tspriorityqueue/-/tspriorityqueue-0.6.0.tgz#79a00dc1e98f327ee9f23f902f8823a368e0e607"
 
 typescript@^2.3.2:
   version "2.3.4"

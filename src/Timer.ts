@@ -1,12 +1,10 @@
-import { Priority } from 'tspriorityqueue'
-
-export class Timer implements Priority<number> {
-	public priority: number = -1
-	public queueIndex: number = -1
+export class Timer {
+	public descriptor: number = -1
+	public timeout: number
 
 	constructor(
 		public handler: (...args: any[]) => void, 
-		public timeout: number,
+		public interval: number,
 		public args: any[] = [],
 		public intervalMode: boolean = false) {
 	}
