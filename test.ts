@@ -7,8 +7,8 @@ import { now } from 'tsnow'
 @suite class TimerPoolTestSute {
 	@test("default constructor") case0() {
 		const tp = new TimerPool()
-		const nowTime = now()
-		equal( nowTime - tp.time <= 0.1, true )
+		const tp1 = new TimerPool( now() )
+		equal( tp.time - tp1.time <= 1, true )
 	}
 	
 	@test("size") case1() {
